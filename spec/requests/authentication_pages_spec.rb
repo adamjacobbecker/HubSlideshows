@@ -8,14 +8,14 @@ describe "Authentication" do
     
     describe "for unauthenticated hub" do
       before { visit root_path }
-      it { should have_link('Sign in ') }
+      it { should have_link('Sign in') }
     end
     
     describe "for authenticated hub" do
       let(:hub) { FactoryGirl.create(:hub) }
 
       before do
-       signin(:hub)
+       signin(hub)
        visit root_path
       end
       

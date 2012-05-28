@@ -6,7 +6,7 @@ class SessionsController < ApplicationController
     hub = Hub.find_by_email(params[:email])
     if hub && hub.authenticate(params[:password])
       sign_in hub
-      redirect_back_or hub
+      redirect_back_or root_path
     else
       flash.now[:error] = 'Invalid email/password combination'
       render 'new'
