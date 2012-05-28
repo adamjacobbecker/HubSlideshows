@@ -16,4 +16,8 @@ module ApplicationHelper
     hubs
   end
   
+  def all_page_types
+    return [nil, 'Big Text', 'Big Photo', 'Text and Photo', 'Team Bios', 'Contact Info']
+  end
+  
 end

@@ -1,0 +1,17 @@
+%h2 Pages
+
+= link_to 'add new', new_project_page_path(@project)
+
+%table.table.table-striped.table-bordered
+  %tr
+    %th Page Type
+    %th Page Content
+    %th Actions
+  - @pages.each do |page|
+    %tr
+      %td= page.page_type
+      %td= page.content
+      %td
+        = link_to 'delete', project_page_path(@project, page), method: :delete
+        &middot;
+        = link_to 'edit', edit_project_page_path(@project, page)

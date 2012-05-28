@@ -1,7 +1,9 @@
 HubSlideshows::Application.routes.draw do
   
   resources :sessions, only: [:new, :create, :destroy]
-  resources :projects, only: [:destroy, :edit, :update]
+  resources :projects do
+    resources :pages
+  end
   
   match '/signin', to: 'sessions#new'
   match '/signout', to: 'sessions#destroy', via: :delete

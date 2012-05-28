@@ -4,6 +4,7 @@ class ProjectsController < ApplicationController
   
   def edit
     @all_hubs = Hub.all
+    @pages = @project.pages
   end
   
   def update

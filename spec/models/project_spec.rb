@@ -1,3 +1,18 @@
+# == Schema Information
+#
+# Table name: projects
+#
+#  id         :integer         not null, primary key
+#  name       :string(255)
+#  email      :string(255)
+#  key        :string(255)
+#  hub_id     :integer
+#  created_at :datetime        not null
+#  updated_at :datetime        not null
+#  logo       :string(255)
+#  misc_image :string(255)
+#
+
 require 'spec_helper'
 
 describe Project do
