@@ -4,4 +4,9 @@ class StaticPagesController < ApplicationController
       @projects = current_hub.projects.all
     end
   end
+  
+  def play
+    @hub = Hub.find(params[:hub_id])
+    render :layout => false
+  end
 end

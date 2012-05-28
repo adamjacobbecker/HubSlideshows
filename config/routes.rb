@@ -5,6 +5,8 @@ HubSlideshows::Application.routes.draw do
     resources :pages
   end
   
+  match '/play/:hub_id', to: 'static_pages#play'
+  
   match '/signin', to: 'sessions#new'
   match '/signout', to: 'sessions#destroy', via: :delete
   
