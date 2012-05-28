@@ -1,1 +1,4 @@
-Yo
+- if !signed_in?
+  %p Please sign in.
+- else
+  %h1 Projects for #{current_hub.name}

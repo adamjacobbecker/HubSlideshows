@@ -9,6 +9,12 @@
         %ul.nav.pull-right
           %li
             - if signed_in?
-              = link_to 'Sign out', signout_path, method: :delete
+              %li.dropdown
+                %a.dropdown-toggle{ href: "#", :"data-toggle" => "dropdown" }
+                  = current_hub.name
+                  %b.caret  
+                %ul.dropdown-menu
+                  %li
+                    = link_to 'Sign out', signout_path, method: :delete
             - else
-              = link_to 'Sign in', signin_path           
+              = link_to 'Sign in', signin_path
