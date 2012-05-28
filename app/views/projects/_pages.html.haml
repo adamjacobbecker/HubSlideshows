@@ -12,6 +12,6 @@
       %td= page.page_type
       %td= page.content
       %td
-        = link_to 'delete', project_page_path(@project, page), method: :delete
+        = link_to 'delete', project_page_path(@project, page), confirm: "Are you sure?", method: :delete
         &middot;
         = link_to 'edit', edit_project_page_path(@project, page)
