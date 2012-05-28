@@ -6,6 +6,11 @@ def signin(hub)
   cookies[:remember_token] = hub.remember_token # Sign in when not using Capybara as well.
 end
 
+def signout
+  visit signout_path
+  cookies.delete(:remember_token)
+end
+
 RSpec::Matchers.define :be_accessible do |attribute|
   match do |response|
     response.class.accessible_attributes.include?(attribute)

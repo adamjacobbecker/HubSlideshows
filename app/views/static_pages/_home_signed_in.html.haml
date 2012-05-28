@@ -1,0 +1,17 @@
+%h1 Projects for #{current_hub.name}
+
+%table.table.table-bordered.table-striped
+  %tr
+    %th Project Name
+    %th Email
+    %th Key
+    %th Actions
+  - @projects.each do |project|
+    %tr
+      %td= project.name
+      %td= project.email
+      %td= project.key
+      %td
+        = link_to 'delete', project, method: :delete
+        &middot;
+        = link_to 'edit', edit_project_path(project)

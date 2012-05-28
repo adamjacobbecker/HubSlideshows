@@ -1,5 +1,5 @@
 class Project < ActiveRecord::Base
-  attr_accessible :name, :email
+  attr_accessible :name, :email, :logo, :misc_image
   
   belongs_to :hub
   

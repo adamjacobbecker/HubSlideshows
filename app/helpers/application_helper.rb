@@ -7,4 +7,13 @@ module ApplicationHelper
       "#{base_title} | #{page_title}"
     end
   end
+  
+  def all_hubs
+    hubs = {}
+    Hub.all.each do |hub|
+      hubs[hub.name] = hub.id
+    end
+    hubs
+  end
+  
 end

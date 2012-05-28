@@ -5,4 +5,10 @@ FactoryGirl.define do
     password "foobar"
     password_confirmation "foobar"
   end
+  
+  factory :project do
+    sequence(:name) { |n| "Project #{n}" }
+    sequence(:email) { |n| "project_#{n}@example.com" }
+    hub
+  end
 end

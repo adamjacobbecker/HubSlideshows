@@ -1,4 +1,4 @@
 - if !signed_in?
-  %p Please sign in.
+  = render 'home_signed_out'
 - else
-  %h1 Projects for #{current_hub.name}
+  = render 'home_signed_in'

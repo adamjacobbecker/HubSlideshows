@@ -11,6 +11,8 @@ describe Project do
   
   it { should respond_to :name }
   it { should respond_to :email }
+  it { should respond_to :logo }
+  it { should respond_to :misc_image }
   it { should respond_to :hub }
   
   it { should_not be_accessible(:hub_id) }

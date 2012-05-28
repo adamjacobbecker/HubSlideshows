@@ -25,6 +25,8 @@ class Hub < ActiveRecord::Base
   validates :password, length: { minimum: 6 }
   validates :password_confirmation, presence: true
   
+  default_scope order: 'hubs.name'
+  
   private
     def create_remember_token
       self.remember_token = SecureRandom.urlsafe_base64
