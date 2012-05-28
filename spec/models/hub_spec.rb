@@ -12,6 +12,8 @@ describe Hub do
   it { should respond_to :name }
   it { should respond_to :email }
   
+  it { should_not be_accessible(:password_digest) }
+  
   it { should be_valid }
   
   
