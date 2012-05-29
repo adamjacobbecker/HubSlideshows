@@ -1,0 +1,181 @@
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font-size: 100%;
+    font: inherit;
+    vertical-align: baseline;
+}
+
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure, 
+footer, header, hgroup, menu, nav, section {
+    display: block;
+}
+body {
+    line-height: 1;
+}
+ol, ul {
+    list-style: none;
+}
+blockquote, q {
+    quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+    content: '';
+    content: none;
+}
+
+table {
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+
+
+body {
+    font-family: 'Open Sans', sans-serif;
+    min-height: 740px;
+    background: rgb(215, 215, 215);
+    background: -webkit-gradient(radial, 50% 50%, 0, 50% 50%, 500, from(rgb(240, 240, 240)), to(rgb(190, 190, 190)));
+    background: -webkit-radial-gradient(rgb(240, 240, 240), rgb(190, 190, 190));
+    background:    -moz-radial-gradient(rgb(240, 240, 240), rgb(190, 190, 190));
+    background:     -ms-radial-gradient(rgb(240, 240, 240), rgb(190, 190, 190));
+    background:      -o-radial-gradient(rgb(240, 240, 240), rgb(190, 190, 190));
+    background:         radial-gradient(rgb(240, 240, 240), rgb(190, 190, 190));    
+}
+
+
+.step {
+    position: relative;
+    width: 900px;
+    padding: 40px;
+    margin: 20px auto;
+
+    box-sizing: border-box;
+
+    font-size: 48px;
+    line-height: 1.5;
+}
+
+.impress-enabled {
+    
+    .step {
+        margin: 0;
+        opacity: 0.3;
+        padding: 0;
+
+        -webkit-transition: opacity 1s;
+        -moz-transition:    opacity 1s;
+        -ms-transition:     opacity 1s;
+        -o-transition:      opacity 1s;
+        transition:         opacity 1s;
+        
+        &.active {
+            opacity: 1;
+        }
+        
+        .corner {
+            position: absolute;
+            top: -15px;
+            right: -40px;
+            text-align: center;
+            
+            img {
+                width: 150px;
+            }             
+        }
+        
+        .big-text {
+            font-size: 36px;
+            padding: 40px;
+            background-color: #efefef;
+            -webkit-transform: rotate(-2deg);
+            position: relative;            
+        }
+        
+        .big-photo {
+            background-color: #efefef;
+            padding: 10px;
+            width: 100%;
+                
+                img {
+                    width: 100%;
+                    vertical-align: middle;
+                }
+        }
+        
+        .text-and-photo {
+            font-size: 24px;
+            padding: 40px;
+            background-color: #efefef;
+            -webkit-transform: rotate(1deg);
+            position: relative;
+            
+            .frame {
+               text-align: center;
+               margin-top: -100px;
+               padding-bottom: 50px;
+                
+                img {
+                    width: 600px;
+                    border: 10px solid #666;
+                    -webkit-transform: rotate(-1deg);
+                    
+                }
+            }
+        }
+        
+        .team-bios {
+            font-size: 24px;
+            background-color: #efefef;    
+            padding: 40px;
+            
+            h3 {
+                font-size: 36px;
+                font-weight: 600;
+                margin-top: -20px;
+            }
+            
+            .members {
+                text-align: center;
+                
+                .member {
+                    display: inline-block;
+                    padding: 40px 60px;
+                    
+                    .picture {
+                        img {
+                            border: 10px solid #666;
+                        }
+                    }
+                    
+                }
+                
+            }
+            
+                    
+        }
+        
+    }
+    
+    .fallback-message, .hint {
+        display: none;
+    }
+    
+}
+
+.impress-enabled          { pointer-events: none }
+.impress-enabled #impress { pointer-events: auto }

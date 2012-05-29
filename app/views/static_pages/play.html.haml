@@ -4,28 +4,60 @@
 %head
   %title Hub Slideshow
   = stylesheet_link_tag "slideshow", media: "all"
+  %link{href: "http://fonts.googleapis.com/css?family=Open+Sans:400italic,600italic,700italic,400,700,600", rel: "stylesheet", type: "text/css"}
   
 %body.impress-not-supported
   .fallback-message
     Sorry, not a great browser.
   
   #impress
-    .step.slide{"data-x" => "-1000", "data-y" => "-1500"}
-      Aren't you just bored with all these presentations?
+  
+    // .step{"data-x" => "-2000", "data-y" => "-1500", "data-scale" => "3"}
     
-    .step.slide{"data-x" => "0", "data-y" => "-1500"}
-      UYes I am bored>?
-      
+    .step{"data-x" => "-4000", "data-y" => "-1500"}
+      .team-bios
+        .corner
+          %img{"src" => "http://www.govhub.org/images/logo.png"}
+        %h3 Team
+        .members
+          - 1.times do
+            .member
+              .picture
+                %img{"src" => "http://www.gravatar.com/avatar/64f9dd1e355669dd36340a804ee91d40?s=240&d=identicon"}
+              .name Adam Becker
+              .title Co-founder
+    
+    .step{"data-x" => "-3000", "data-y" => "-1500"}
+      .text-and-photo
+        .frame
+          %img{"src" => "http://drleonardcoldwell.com/wp-content/uploads/2011/07/Congress2.jpg"}
+        %p Delectus velit nulla fixie food truck odd future, nostrud excepteur wayfarers ut |
+           cardigan terry richardson bicycle rights four loko aliquip. Vero quis photo booth   |
+           synth, eu occaecat beard. Skateboard cliche banksy, odd future kale chips gentrify  |
+           chillwave street art umami et qui. |
+    
+    .step{"data-x" => "-2000", "data-y" => "-1500"}
+      .big-photo
+        %img{"src" => "http://drleonardcoldwell.com/wp-content/uploads/2011/07/Congress2.jpg"}
+  
+    .step{"data-x" => "-1000", "data-y" => "-1500"}
+      .big-text
+        .corner
+          %img{"src" => "http://www.govhub.org/images/logo.png"}
+        %p Delectus velit nulla fixie food truck odd future, nostrud excepteur wayfarers ut |
+        cardigan terry richardson bicycle rights four loko aliquip. Vero quis photo booth   |
+        synth, eu occaecat beard. Skateboard cliche banksy, odd future kale chips gentrify  |
+        chillwave street art umami et qui. Officia fanny pack beard, you probably haven't   |
+         heard of them godard williamsburg nihil. Food truck et labore viral, hoodie fanny  |
+         pack laborum esse pour-over freegan bespoke. |
+          
     .step{"data-x" => "3000", "data-y" => "1500", "data-scale" => "10"}
       
 
   .hint
     %p Use a spacebar or arrow keys to navigate
-    :javascript
-      if ("ontouchstart" in document.documentElement) { 
-          document.querySelector(".hint").innerHTML = "<p>Tap on the left or right to navigate</p>";
-      }
     
-    = javascript_include_tag "slideshow"
-    :javascript
-      impress().init();
+
+  = javascript_include_tag "slideshow"
+    
+    
