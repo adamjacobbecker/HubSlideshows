@@ -55,10 +55,6 @@ body {
     background:     -ms-radial-gradient(rgb(240, 240, 240), rgb(190, 190, 190));
     background:      -o-radial-gradient(rgb(240, 240, 240), rgb(190, 190, 190));
     background:         radial-gradient(rgb(240, 240, 240), rgb(190, 190, 190));    
-}
-
-
-.impress-enabled {
     
     .step {
         width: 900px;
@@ -82,6 +78,8 @@ body {
         
         &.title-step {
             width: auto !important;
+            white-space: nowrap;
+            display: inline-block;
         }
         
         .corner {
@@ -96,8 +94,10 @@ body {
         }
         
         > .project-title {
-            font-size: 130px;
+            font-size: 50px;
             font-weight: 700;
+            margin-top: -350px;
+            margin-right: 1150px;
         }
         
         > .big-text {
