@@ -3,7 +3,7 @@
 %html{lang: "en"}
 %head
   %title Hub Slideshow
-  = stylesheet_link_tag "application", media: "all"
+  = stylesheet_link_tag "slideshow", media: "all"
   
 %body.impress-not-supported
   .fallback-message
@@ -26,6 +26,6 @@
           document.querySelector(".hint").innerHTML = "<p>Tap on the left or right to navigate</p>";
       }
     
-    = javascript_include_tag "application"
+    = javascript_include_tag "slideshow"
     :javascript
       impress().init();
