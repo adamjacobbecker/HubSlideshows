@@ -58,24 +58,17 @@ body {
 }
 
 
-.step {
-    position: relative;
-    width: 900px;
-    padding: 40px;
-    margin: 20px auto;
-
-    box-sizing: border-box;
-
-    font-size: 48px;
-    line-height: 1.5;
-}
-
 .impress-enabled {
     
     .step {
+        width: 900px;
+        box-sizing: border-box;
+        font-size: 48px;
+        line-height: 1.5;
         margin: 0;
-        opacity: 0.3;
+        opacity: 0.6;
         padding: 0;
+        position: relative;
 
         -webkit-transition: opacity 1s;
         -moz-transition:    opacity 1s;
@@ -85,6 +78,10 @@ body {
         
         &.active {
             opacity: 1;
+        }
+        
+        &.title-step {
+            width: auto !important;
         }
         
         .corner {
@@ -98,7 +95,14 @@ body {
             }             
         }
         
-        .big-text {
+        > .project-title {
+            h1 {
+                font-size: 130px;
+                font-weight: 700;
+            }
+        }
+        
+        > .big-text {
             font-size: 36px;
             padding: 40px;
             background-color: #efefef;
@@ -106,10 +110,10 @@ body {
             position: relative;            
         }
         
-        .big-photo {
+        > .big-photo {
             background-color: #efefef;
             padding: 10px;
-            width: 100%;
+            width: 900px;
                 
                 img {
                     width: 100%;
@@ -117,7 +121,7 @@ body {
                 }
         }
         
-        .text-and-photo {
+        > .text-and-photo {
             font-size: 24px;
             padding: 40px;
             background-color: #efefef;
@@ -138,10 +142,11 @@ body {
             }
         }
         
-        .team-bios {
+        > .team-bios {
             font-size: 24px;
             background-color: #efefef;    
             padding: 40px;
+            width: 800px;
             
             h3 {
                 font-size: 36px;
@@ -154,7 +159,7 @@ body {
                 
                 .member {
                     display: inline-block;
-                    padding: 40px 60px;
+                    padding: 40px;
                     
                     .picture {
                         img {
@@ -168,7 +173,34 @@ body {
             
                     
         }
-        
+                
+        > .contact-info {
+            font-size: 28px;
+            background-color: #efefef;    
+            padding: 40px;
+            -webkit-transform: rotate(1deg);
+            width: 550px;
+            
+            .website {
+                padding-bottom: 30px;
+            }
+            
+            .twitter {
+                background: url('/assets/twitter.png') no-repeat;
+                line-height: 70px;
+                padding-left: 80px;
+                margin: 10px 0;
+            }
+            
+            .facebook {
+                background: url('/assets/facebook.png') no-repeat;
+                line-height: 35px;
+                padding-left: 80px;
+                margin: 10px 0;
+                padding-bottom: 20px;
+            }
+            
+        }
     }
     
     .fallback-message, .hint {

@@ -7,12 +7,33 @@
   %link{href: "http://fonts.googleapis.com/css?family=Open+Sans:400italic,600italic,700italic,400,700,600", rel: "stylesheet", type: "text/css"}
   
 %body.impress-not-supported
-  .fallback-message
-    Sorry, not a great browser.
   
   #impress
   
-    // .step{"data-x" => "-2000", "data-y" => "-1500", "data-scale" => "3"}
+    .step{"data-x" => "-4000", "data-y" => "-1300", "data-scale" => "2.5"}
+    
+    .step.title-step{"data-x" => "-5000", "data-y" => "-1900"}
+      .project-title
+        %h1 GovHub
+    
+    .step.contact-step{"data-x" => "-4800", "data-y" => "-1500"}
+      .contact-info
+        .mailing-address
+          GovHub
+          %br
+          2050 Allston Way, Suite 400
+          %br
+          Berkeley, CA 94707
+        .phone (510) 928-9111
+        .website
+          %a{href: "#"} http://www.govhub.org
+        .twitter @GovHubGovHubGovHub
+        .facebook 
+          facebook.com/
+          %br
+          GovHub
+        .blog
+          %a{href: "#"} blog.govhub.org
     
     .step{"data-x" => "-4000", "data-y" => "-1500"}
       .team-bios
@@ -20,7 +41,7 @@
           %img{"src" => "http://www.govhub.org/images/logo.png"}
         %h3 Team
         .members
-          - 1.times do
+          - 2.times do
             .member
               .picture
                 %img{"src" => "http://www.gravatar.com/avatar/64f9dd1e355669dd36340a804ee91d40?s=240&d=identicon"}
