@@ -22,7 +22,7 @@
   = text_field_tag :"text_and_photo[url]", (@page.content[:url] if @page.page_type == "Text and Photo")
   
 .page-type.team-bios{:"data-page-type" => "Team Bios"}
-  - (1..4).each do |n|
+  - (1..2).each do |n|
     %h5 Team member ##{n}
     
     = label_tag "Name"

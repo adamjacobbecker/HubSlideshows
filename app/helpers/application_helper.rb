@@ -19,9 +19,5 @@ module ApplicationHelper
   def all_page_types
     return [nil, 'Big Text', 'Big Photo', 'Text and Photo', 'Team Bios', 'Contact Info']
   end
-  
-  def partial_name_from(page_type)
-    page_type.downcase.gsub(/\s/, '_')
-  end
-  
+    
 end

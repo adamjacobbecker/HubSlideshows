@@ -11,36 +11,33 @@
   #impress
   
     //big overview step
-    .step{"data-x" => 0, "data-y" => 0, "data-scale" => "5"}
-  
+    .step{"data-x" => 3200, "data-y" => -1000, "data-rotate-x" => "45", "data-scale" => "8"}
+      #{@hub.name} Members
+      
+    .step{"data-x" => 3200, "data-y" => 1500, "data-scale" => "8"}
+    
+    
     - @hub.projects.all.each do |project|
     
-      - @orig_x = @x
-      - @orig_y = @y
+      - before_project(@slide_params)
   
       //overview step
-      .step{"data-x" => @x + 1000, "data-y" => @y + 300, "data-scale" => "2.5"}
+      .step{"data-x" => @slide_params[:x] + 1000, "data-y" => @slide_params[:y] + 300, "data-scale" => "2.5"}
     
       //title step
-      .step.title-step{"data-x" => @x - 200, "data-y" => @y - 450}
-        .project-title
-          %h1 GovHub
+      .step.title-step{"data-x" => @slide_params[:x] - 200, "data-y" => @slide_params[:y] - 400}
+        .project-title= project.name
           
       - project.pages.all.each do |page|
           
-        .step{"data-x" => @x, "data-y" => @y}
+        .step{"data-x" => @slide_params[:x], "data-y" => @slide_params[:y]}
           = render "steps/" + partial_name_from(page.page_type), page: page, project: project
-          - if @page_count % 3 == 0
-            - @x -= 2000
-          - else
-            - @x += 1000
-          - @y += 700 if @page_count % 3 == 0
-          - @page_count += 1
+          - after_page(@slide_params)
           
       //overview step
-      .step{"data-x" => @orig_x + 1000, "data-y" => @orig_y + 300, "data-scale" => "2.5"}
+      .step{"data-x" => @slide_params[:orig_x] + 1000, "data-y" => @slide_params[:orig_y] + 300, "data-scale" => "2.5"}
       
-      - @project_count += 1    
+      - after_project(@slide_params)   
 
   .hint
     %p Use a spacebar or arrow keys to navigate

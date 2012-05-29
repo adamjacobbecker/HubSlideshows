@@ -7,7 +7,7 @@ class StaticPagesController < ApplicationController
   
   def play
     @hub = Hub.find(params[:hub_id])
-    @x = @y = @page_count = @project_count = 1
+    @slide_params = {x: 0, y: 0, page_count: 1, project_count: 1}
     render :layout => false
   end
   
