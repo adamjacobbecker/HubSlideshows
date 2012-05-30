@@ -10,4 +10,5 @@ $ ->
     moveCenterToLeft($(this))
     
   impress().init()
+  $('body').show();
     
