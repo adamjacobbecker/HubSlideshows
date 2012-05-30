@@ -17,7 +17,7 @@ module ApplicationHelper
   end
   
   def all_page_types
-    return [nil, 'Big Text', 'Big Photo', 'Text and Photo', 'Team Bios', 'Contact Info']
+    return ['Select a page type...', 'Big Text', 'Big Photo', 'Text and Photo', 'Team Bios', 'Contact Info']
   end
     
 end
