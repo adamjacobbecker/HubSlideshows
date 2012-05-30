@@ -180,9 +180,10 @@ body {
         > .contact-info {
             font-size: 28px;
             background-color: #efefef;    
-            padding: 40px;
+            padding: 40px 60px;
             -webkit-transform: rotate(1deg);
-            width: 550px;
+            display: inline-block;
+            text-align: left;
             
             .website {
                 padding-bottom: 30px;
