@@ -28,11 +28,11 @@ module SlideshowHelper
  
     @slide_params[:x] = @slide_params[:orig_x] + 3500
     
-    if @slide_params[:page_count] == 3
-      @slide_params[:x] -= 1000
-    elsif @slide_params[:page_count] <= 2
-      @slide_params[:x] -= 1500      
-    end
+   # if @slide_params[:page_count] == 3
+   #   @slide_params[:x] -= 1000
+   # elsif @slide_params[:page_count] <= 2
+   #   @slide_params[:x] -= 1500      
+   # end
     
     @slide_params[:y] = @slide_params[:orig_y]   
     
