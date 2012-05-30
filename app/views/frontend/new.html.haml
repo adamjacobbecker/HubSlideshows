@@ -3,158 +3,162 @@
 %h1 Add Project to Slideshow
 %hr
 
-%h2 Basic info
+= form_tag nil do
 
-.row
+  %h2 Basic info
 
-  .span3
-    First, give us some basic info
-    about your project or organization.
+  .row
+
+    .span3
+      First, give us some basic info
+      about your project or organization.
     
-  .span9
-    .form-horizontal
+    .span9
+      .form-horizontal
 
-      .control-group
-        = label_tag :hub_id, nil, class: 'control-label'
-        .controls
-          = select_tag :hub_id, options_for_select(all_hubs)
+        .control-group
+          = label_tag :hub_id, nil, class: 'control-label'
+          .controls
+            = select_tag :hub_id, options_for_select(all_hubs)
 
-      .control-group
-        = label_tag :name, nil, class: 'control-label'
-        .controls
-          = text_field_tag :name
+        .control-group
+          = label_tag :name, nil, class: 'control-label'
+          .controls
+            = text_field_tag :name
 
-      .control-group
-        = label_tag :email, nil, class: 'control-label'
-        .controls
-          = text_field_tag :email
+        .control-group
+          = label_tag :email, nil, class: 'control-label'
+          .controls
+            = text_field_tag :email
 
-      .control-group
-        = label_tag :logo, nil, class: 'control-label'
-        .controls
-          = file_field_tag :logo
+        .control-group
+          = label_tag :logo, nil, class: 'control-label'
+          .controls
+            = file_field_tag :logo
 
-      .control-group
-        = label_tag :misc_image, nil, class: 'control-label'
-        .controls
-          = file_field_tag :misc_image
+        .control-group
+          = label_tag :misc_image, nil, class: 'control-label'
+          .controls
+            = file_field_tag :misc_image
   
-%hr  
+  %hr  
   
-%h2 Slides
+  %h2 Slides
 
-.row
+  .row
 
-  .span3
-    Now, configure the slides of
-    your presentation.
+    .span3
+      Now, configure the slides of
+      your presentation.
 
-  .span9
-    %button.pull-right.btn.new-slide-btn Add New Slide
+    .span9
+      %button.pull-right.btn.new-slide-btn Add New Slide
   
-    .slides#sortable
-      .slide
-        .heading
-          %a.toggle Big Text
-          %i.icon-chevron-down.pull-right
-          %i.icon-chevron-up.pull-right
-        .content
-          .form-horizontal
-            .control-group
-              = label_tag :page_type, nil, class: 'control-label'
-              .controls
-                = select_tag :page_type, options_for_select(all_page_types), class: 'page-type-select'
+      .slides#sortable
+        .slide
+          .heading
+            %a.toggle Big Text
+            %i.icon-chevron-down.pull-right
+            %i.icon-chevron-up.pull-right
+          .content
+            .form-horizontal
+              .control-group
+                = label_tag :page_type, nil, class: 'control-label'
+                .controls
+                  = select_tag :page_type, options_for_select(all_page_types), class: 'page-type-select'
                 
-            -############### Big Text ###############
-            .page-type.big-text{:"data-page-type" => "Big Text"}
-              .control-group
-                = label_tag "Text", nil, class: 'control-label'
-                .controls
-                  = text_area_tag :"big_text[text]"
+              -############### Big Text ###############
+              .page-type.big-text{:"data-page-type" => "Big Text"}
+                .control-group
+                  = label_tag "Text", nil, class: 'control-label'
+                  .controls
+                    = text_area_tag :"big_text[text]"
                   
             
-            -############### Big Photo ###############
-            .page-type.big-photo{:"data-page-type" => "Big Photo"}
-              .control-group
-                = label_tag "Url", nil, class: 'control-label'
-                .controls
-                  = file_field_tag :"big_photo[url]"
+              -############### Big Photo ###############
+              .page-type.big-photo{:"data-page-type" => "Big Photo"}
+                .control-group
+                  = label_tag "Url", nil, class: 'control-label'
+                  .controls
+                    = file_field_tag :"big_photo[url]"
                   
             
-            -############### Text and Photo ###############
-            .page-type.text-and-photo{:"data-page-type" => "Text and Photo"}
-              .control-group
-                = label_tag "Text", nil, class: 'control-label'
-                .controls
-                  = text_area_tag :"text_and_photo[text]"
+              -############### Text and Photo ###############
+              .page-type.text-and-photo{:"data-page-type" => "Text and Photo"}
+                .control-group
+                  = label_tag "Text", nil, class: 'control-label'
+                  .controls
+                    = text_area_tag :"text_and_photo[text]"
                   
-              .control-group
-                = label_tag "Photo Url", nil, class: 'control-label'
-                .controls
-                  = file_field_tag :"text_and_photo[url]"
+                .control-group
+                  = label_tag "Photo Url", nil, class: 'control-label'
+                  .controls
+                    = file_field_tag :"text_and_photo[url]"
                   
                   
-            -############### Team Bios ###############
-            .page-type.team-bios{:"data-page-type" => "Team Bios"}
-              - (1..2).each do |n|
-                %h5 Team member ##{n}
+              -############### Team Bios ###############
+              .page-type.team-bios{:"data-page-type" => "Team Bios"}
+                - (1..2).each do |n|
+                  %h5 Team member ##{n}
+            
+                  .control-group
+                    = label_tag "Name", nil, class: 'control-label'
+                    .controls
+                      = text_field_tag :"team_bios[member_#{n}_name]"
+                    
+                  .control-group
+                    = label_tag "Title", nil, class: 'control-label'
+                    .controls
+                      = text_field_tag :"team_bios[member_#{n}_title]"
+            
+                  .control-group
+                    = label_tag "Photo", nil, class: 'control-label'
+                    .controls
+                      = file_field_tag :"team_bios[member_#{n}_photo]"
+                    
+                    
+              -############### Contact Info ###############
+              .page-type.text-and-photo{:"data-page-type" => "Contact Info"}
+                .control-group
+                  = label_tag "Mailing Address", nil, class: 'control-label'
+                  .controls
+                    = text_area_tag :"contact_info[mailing_address]", nil, placeholder: "Include company name"
             
                 .control-group
-                  = label_tag "Name", nil, class: 'control-label'
+                  = label_tag "Phone", nil, class: 'control-label'
                   .controls
-                    = text_field_tag :"team_bios[member_#{n}_name]"
-                    
+                    = text_field_tag :"contact_info[phone]"
+                  
                 .control-group
-                  = label_tag "Title", nil, class: 'control-label'
+                  = label_tag "Website", nil, class: 'control-label'
                   .controls
-                    = text_field_tag :"team_bios[member_#{n}_title]"
-            
+                    .input-prepend
+                      %span.add-on http://
+                      = text_field_tag :"contact_info[website]"
+                  
                 .control-group
-                  = label_tag "Photo", nil, class: 'control-label'
+                  = label_tag "Twitter", nil, class: 'control-label'
                   .controls
-                    = file_field_tag :"team_bios[member_#{n}_photo]"
-                    
-                    
-            -############### Contact Info ###############
-            .page-type.text-and-photo{:"data-page-type" => "Contact Info"}
-              .control-group
-                = label_tag "Mailing Address", nil, class: 'control-label'
-                .controls
-                  = text_area_tag :"contact_info[mailing_address]", nil, placeholder: "Include company name"
-            
-              .control-group
-                = label_tag "Phone", nil, class: 'control-label'
-                .controls
-                  = text_field_tag :"contact_info[phone]"
+                    .input-prepend
+                      %span.add-on @
+                      = text_field_tag :"contact_info[twitter]"
                   
-              .control-group
-                = label_tag "Website", nil, class: 'control-label'
-                .controls
-                  .input-prepend
-                    %span.add-on http://
-                    = text_field_tag :"contact_info[website]"
+                .control-group
+                  = label_tag "Facebook", nil, class: 'control-label'
+                  .controls
+                    .input-prepend
+                      %span.add-on facebook.com/
+                      = text_field_tag :"contact_info[facebook]"
                   
-              .control-group
-                = label_tag "Twitter", nil, class: 'control-label'
-                .controls
-                  .input-prepend
-                    %span.add-on @
-                    = text_field_tag :"contact_info[twitter]"
-                  
-              .control-group
-                = label_tag "Facebook", nil, class: 'control-label'
-                .controls
-                  .input-prepend
-                    %span.add-on facebook.com/
-                    = text_field_tag :"contact_info[facebook]"
-                  
-              .control-group
-                = label_tag "Blog", nil, class: 'control-label'
-                .controls
-                  .input-prepend
-                    %span.add-on http://
-                    = text_field_tag :"contact_info[blog]"
+                .control-group
+                  = label_tag "Blog", nil, class: 'control-label'
+                  .controls
+                    .input-prepend
+                      %span.add-on http://
+                      = text_field_tag :"contact_info[blog]"
             
             
-             
+  .form-actions
+    %button.btn.btn-primary.btn-large Save
+         
             

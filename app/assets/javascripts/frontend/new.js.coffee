@@ -4,3 +4,8 @@ $(document).on 'click', '.slide .heading a.toggle', ->
   
 $(document).on 'change', '.page-type-select', ->
   $(this).closest('.slide').find('.heading a.toggle').html($(this).val())
+  $(this).closest('.form-horizontal').find(".page-type").hide();
+  $(this).closest('.form-horizontal').find(".page-type[data-page-type='" + $(this).val() + "']").show()
+  
+$ ->
+  $(".page-type-select").trigger('change')
