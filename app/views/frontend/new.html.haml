@@ -1,0 +1,63 @@
+- provide(:title, "New Project")
+- provide(:body_class, "new-project")
+%h1 Add Project to Slideshow
+%hr
+
+%h2 Basic info
+
+.row
+
+  .span3
+    First, give us some basic info
+    about your project or organization.
+    
+  .span9
+    = form_tag projects_path, class: 'form-horizontal' do
+
+      .control-group
+        = label_tag :hub_id, nil, class: 'control-label'
+        .controls
+          = select_tag :hub_id, options_for_select(all_hubs)
+
+      .control-group
+        = label_tag :name, nil, class: 'control-label'
+        .controls
+          = text_field_tag :name
+
+      .control-group
+        = label_tag :email, nil, class: 'control-label'
+        .controls
+          = text_field_tag :email
+
+      .control-group
+        = label_tag :logo, nil, class: 'control-label'
+        .controls
+          = file_field_tag :logo
+
+      .control-group
+        = label_tag :misc_image, nil, class: 'control-label'
+        .controls
+          = file_field_tag :misc_image
+  
+%hr  
+  
+%h2 Slides
+
+.row
+
+  .span3
+    Now, configure the slides of
+    your presentation.
+
+  .span9
+    %button.pull-right.btn.new-slide-btn Add New Slide
+  
+    .slides#sortable
+      .slide
+        .heading
+          %a.toggle Big Text
+          %i.icon-chevron-down.pull-right
+          %i.icon-chevron-up.pull-right
+        .content
+          Blah balah blah blah blah
+    
