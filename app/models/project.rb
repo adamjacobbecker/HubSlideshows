@@ -25,6 +25,9 @@ class Project < ActiveRecord::Base
   validates :email, presence: true, format: { with: /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i }
   validates :hub_id, presence: true
   
+  default_scope order: 'name asc'
+  
+  
   private
     def create_key
       self.key = SecureRandom.urlsafe_base64(6) unless self.key

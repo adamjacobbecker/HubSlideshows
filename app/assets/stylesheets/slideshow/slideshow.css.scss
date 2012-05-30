@@ -65,6 +65,7 @@ body {
         opacity: 0.6;
         padding: 0;
         position: relative;
+        text-align: center;
 
         -webkit-transition: opacity 1s;
         -moz-transition:    opacity 1s;
@@ -96,7 +97,7 @@ body {
         > .project-title {
             font-size: 50px;
             font-weight: 700;
-            margin-top: -350px;
+            margin-top: -360px;
             margin-right: 1150px;
         }
         
@@ -111,10 +112,12 @@ body {
         > .big-photo {
             background-color: #efefef;
             padding: 10px;
-            width: 900px;
+            width: auto !important;
+            display: inline-block;
                 
                 img {
-                    width: 100%;
+                    max-width: 900px;
+                    max-height: 600px;
                     vertical-align: middle;
                 }
         }
@@ -132,7 +135,8 @@ body {
                padding-bottom: 50px;
                 
                 img {
-                    width: 600px;
+                    max-width: 600px;
+                    max-height: 300px;
                     border: 10px solid #666;
                     -webkit-transform: rotate(-1deg);
                     
