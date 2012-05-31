@@ -9,7 +9,7 @@ class FrontendController < ApplicationController
     
     @project = Project.new
     
-    project = params["project"]
+    project = ActiveSupport::JSON.decode(params["project"])
     
     @project.hub_id = project["hub_id"].to_i
     @project.name = project["name"]
@@ -19,7 +19,7 @@ class FrontendController < ApplicationController
     
     if @project.save
       
-      ActiveSupport::JSON.decode(project["slides"]).each do |page|
+      project["slides"].each do |page|
         
         @page = @project.pages.build
         @page[:page_type] = page["page_type"]

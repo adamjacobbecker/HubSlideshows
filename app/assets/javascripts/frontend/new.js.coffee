@@ -66,15 +66,13 @@ $(document).on 'click', '#submit-btn', (e) ->
         slide.content.member_2_photo = $("#team_bios_member_2_photo").val()
         
     project.slides.push(slide)
-    
-    project.slides = JSON.stringify(project.slides)
-  
+      
   console.log(project)    
   
   $.ajax el.data('submit-url'),
     type: el.data('method'),
     data: 
-      project: project,
+      project: JSON.stringify(project),
     success: (data) ->
       alert(data)
     
