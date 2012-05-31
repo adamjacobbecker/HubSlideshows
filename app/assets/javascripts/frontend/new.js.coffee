@@ -22,6 +22,8 @@ $(document).on 'click', '#delete-slide', ->
     
 $(document).on 'click', '#submit-btn', (e) ->
   e.preventDefault()
+  el = $(this)
+  # el.button('loading')
   project = {
     hub_id: $("#hub_id").val(),
     name: $("#name").val(),
@@ -34,7 +36,7 @@ $(document).on 'click', '#submit-btn', (e) ->
   $(".slide").not("#template-slide").each ->
     
     slideEl = $(this)
-    slide = {}
+    slide = {content: {}}
     
     return if slideEl.find("#page_type").val() == "Select a page type..."
     
@@ -42,30 +44,39 @@ $(document).on 'click', '#submit-btn', (e) ->
     
     switch slideEl.find("#page_type").val()
       when "Big Text" 
-        slide.text = $("#big_text_text").val()
+        slide.content.text = $("#big_text_text").val()
       when "Big Photo" 
-        slide.url = $("#big_photo_url").val()
+        slide.content.url = $("#big_photo_url").val()
       when "Text and Photo" 
-        slide.text = $("#text_and_photo_text").val()
-        slide.url = $("#text_and_photo_url").val()
+        slide.content.text = $("#text_and_photo_text").val()
+        slide.content.url = $("#text_and_photo_url").val()
       when "Contact Info" 
-        slide.mailing_address = $("#contact_info_mailing_address").val()
-        slide.phone = $("#contact_info_phone").val()
-        slide.website = $("#contact_info_website").val()
-        slide.twitter = $("#contact_info_twitter").val()
-        slide.facebook = $("#contact_info_facebook").val()
-        slide.blog = $("#contact_info_blog").val()
+        slide.content.mailing_address = $("#contact_info_mailing_address").val()
+        slide.content.phone = $("#contact_info_phone").val()
+        slide.content.website = $("#contact_info_website").val()
+        slide.content.twitter = $("#contact_info_twitter").val()
+        slide.content.facebook = $("#contact_info_facebook").val()
+        slide.content.blog = $("#contact_info_blog").val()
       when "Team Bios" 
-        slide.member_1_name = $("#team_bios_member_1_name").val()
-        slide.member_1_title = $("#team_bios_member_1_title").val()
-        slide.member_1_photo = $("#team_bios_member_1_photo").val()
-        slide.member_2_name = $("#team_bios_member_2_name").val()
-        slide.member_2_title = $("#team_bios_member_2_title").val()
-        slide.member_2_photo = $("#team_bios_member_2_photo").val()
+        slide.content.member_1_name = $("#team_bios_member_1_name").val()
+        slide.content.member_1_title = $("#team_bios_member_1_title").val()
+        slide.content.member_1_photo = $("#team_bios_member_1_photo").val()
+        slide.content.member_2_name = $("#team_bios_member_2_name").val()
+        slide.content.member_2_title = $("#team_bios_member_2_title").val()
+        slide.content.member_2_photo = $("#team_bios_member_2_photo").val()
         
     project.slides.push(slide)
+    
+    project.slides = JSON.stringify(project.slides)
   
   console.log(project)    
+  
+  $.ajax el.data('submit-url'),
+    type: el.data('method'),
+    data: 
+      project: project,
+    success: (data) ->
+      alert(data)
     
   
 $ ->

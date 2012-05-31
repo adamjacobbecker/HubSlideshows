@@ -163,4 +163,5 @@
           
           
 .form-actions
-  %button.btn.btn-primary.btn-large#submit-btn Save
+  %button.btn.btn-primary.btn-large#submit-btn{"data-loading-text" => "Saving...", |
+    "data-submit-url" => project_from_json_path, "data-method" => "POST" } Save

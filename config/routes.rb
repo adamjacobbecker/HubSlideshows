@@ -11,7 +11,8 @@ HubSlideshows::Application.routes.draw do
   match '/signin', to: 'sessions#new'
   match '/signout', to: 'sessions#destroy', via: :delete
   
-  match '/new', to: 'frontend#new'
+  match '/new', to: 'frontend#new', via: :get
+  match '/new', to: 'frontend#project_from_json', via: :post, as: 'project_from_json'
   
   root :to => 'static_pages#home'
   

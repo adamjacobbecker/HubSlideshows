@@ -14,7 +14,7 @@
 #
 
 class Project < ActiveRecord::Base
-  attr_accessible :name, :email, :logo, :misc_image, :hub_id
+  attr_accessible :name, :email, :logo, :misc_image, :hub_id, :hub
   
   belongs_to :hub
   has_many :pages, dependent: :destroy
