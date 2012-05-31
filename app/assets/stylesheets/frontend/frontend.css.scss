@@ -19,31 +19,60 @@ body {
             
             .slide {
                 
+                padding: 5px 0;
+                
+                &#template-slide {
+                    display: none;
+                }
+                
                 .heading {
                     border: 1px solid #e5e5e5;
                     border-radius: 4px;
                     position: relative;
                     
+                    .handle {
+                        position: absolute;
+                        top: 8px;
+                        left: 8px;
+                        opacity: 0.3;
+                        cursor: pointer;
+                    }
+
+                    
                     a {
-                        padding: 8px 15px 8px 0;
-                        margin-left: 15px;
+                        padding: 8px 15px 8px 29px;
                         display: block;
                     }
                     
-                    i {
+                    .delete-slide {
+                        position: absolute;
+                        right: 30px;
+                        top: 10px;
+                        
+                        i.icon-trash {
+                            display: none;
+                            cursor: pointer;
+                            opacity: 0.6;
+                        }
+                    }
+                    
+                    .toggle-display {
+                        
                         position: absolute;
                         right: 10px;
                         top: 10px;
+
+                        i.icon-chevron-down {
+                            display: none;
+                        }
+                        
                     }
                     
-                    i.icon-chevron-down {
-                        display: none;
-                    }
                     
                 }
                 
                 .content {
-                   // display: none;
+                    display: none;
                     width: 90%;
                     margin: 0 auto;
                     border: 1px solid #e5e5e5;
@@ -65,11 +94,23 @@ body {
                 
                 &.active {
                     .heading {
-                        i.icon-chevron-down {
-                            display: block;
+                        .toggle-display {
+                            i.icon-chevron-down {
+                                display: block;
+                            }
+                            i.icon-chevron-up {
+                                display: none;
+                            }
                         }
-                        i.icon-chevron-up {
-                            display: none;
+                    }
+                }
+                
+                &:hover {
+                    .heading {
+                        .delete-slide {
+                            i.icon-trash {
+                                display: block;
+                            }
                         }
                     }
                 }

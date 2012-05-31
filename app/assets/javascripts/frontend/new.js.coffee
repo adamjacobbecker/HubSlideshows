@@ -7,5 +7,67 @@ $(document).on 'change', '.page-type-select', ->
   $(this).closest('.form-horizontal').find(".page-type").hide();
   $(this).closest('.form-horizontal').find(".page-type[data-page-type='" + $(this).val() + "']").show()
   
+$(document).on 'click', '.new-slide-btn', ->
+  $("#template-slide")
+    .clone()
+    .prependTo('.slides')
+    .attr('id', '')
+    .find('.heading a.toggle')
+    .trigger('click')
+  
+$(document).on 'click', '#delete-slide', ->
+  if confirm("Are you sure?")
+    $(this).closest('.slide').remove()
+    
+    
+$(document).on 'click', '#submit-btn', (e) ->
+  e.preventDefault()
+  project = {
+    hub_id: $("#hub_id").val(),
+    name: $("#name").val(),
+    email: $("#email").val(),
+    logo: $("#logo").val(),
+    misc_image: $("#misc_image").val(),
+    slides: []
+  }
+  
+  $(".slide").not("#template-slide").each ->
+    
+    slideEl = $(this)
+    slide = {}
+    
+    return if slideEl.find("#page_type").val() == "Select a page type..."
+    
+    slide.page_type = slideEl.find("#page_type").val()
+    
+    switch slideEl.find("#page_type").val()
+      when "Big Text" 
+        slide.text = $("#big_text_text").val()
+      when "Big Photo" 
+        slide.url = $("#big_photo_url").val()
+      when "Text and Photo" 
+        slide.text = $("#text_and_photo_text").val()
+        slide.url = $("#text_and_photo_url").val()
+      when "Contact Info" 
+        slide.mailing_address = $("#contact_info_mailing_address").val()
+        slide.phone = $("#contact_info_phone").val()
+        slide.website = $("#contact_info_website").val()
+        slide.twitter = $("#contact_info_twitter").val()
+        slide.facebook = $("#contact_info_facebook").val()
+        slide.blog = $("#contact_info_blog").val()
+      when "Team Bios" 
+        slide.member_1_name = $("#team_bios_member_1_name").val()
+        slide.member_1_title = $("#team_bios_member_1_title").val()
+        slide.member_1_photo = $("#team_bios_member_1_photo").val()
+        slide.member_2_name = $("#team_bios_member_2_name").val()
+        slide.member_2_title = $("#team_bios_member_2_title").val()
+        slide.member_2_photo = $("#team_bios_member_2_photo").val()
+        
+    project.slides.push(slide)
+  
+  console.log(project)    
+    
+  
 $ ->
   $(".page-type-select").trigger('change')
+  $(".slides#sortable").sortable();
