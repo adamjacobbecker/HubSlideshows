@@ -25,7 +25,7 @@ class Project < ActiveRecord::Base
   validates :email, presence: true, format: { with: /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i }
   validates :hub_id, presence: true
   
-  default_scope order: 'name asc'
+  default_scope order: 'name'
   
   
   private

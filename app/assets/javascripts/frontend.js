@@ -13,5 +13,6 @@
 //= require jquery
 //= require jquery_ujs
 //= require jquery.ui.all
+//= require jquery.form
 //= require bootstrap
 //= require_tree ./frontend

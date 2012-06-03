@@ -14,6 +14,8 @@ HubSlideshows::Application.routes.draw do
   match '/new', to: 'frontend#new', via: :get
   match '/new', to: 'frontend#project_from_json', via: :post, as: 'project_from_json'
   
+  match '/createasset', to: 'frontend#create_asset', as: 'create_asset'
+  
   root :to => 'static_pages#home'
   
   # The priority is based upon order of creation:

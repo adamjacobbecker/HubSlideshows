@@ -28,16 +28,22 @@
         = label_tag :email, nil, class: 'control-label'
         .controls
           = text_field_tag :email
+      
+      = form_for(:upload_form, url: create_asset_path, html: { method: :post, class: 'upload-form', |
+        :"data-url-input" => 'logo', multipart: true }, remote: true ) do |f| |
+        .control-group
+          = label_tag :logo, nil, class: 'control-label'
+          .controls
+            = f.file_field :uploaded_data
+            = text_field_tag :logo            
 
-      .control-group
-        = label_tag :logo, nil, class: 'control-label'
-        .controls
-          = text_field_tag :logo
-
-      .control-group
-        = label_tag :misc_image, nil, class: 'control-label'
-        .controls
-          = text_field_tag :misc_image
+      = form_for(:upload_form, url: create_asset_path, html: { method: :post, class: 'upload-form', |
+        :"data-url-input" => 'misc_image', multipart: true }, remote: true ) do |f| |
+        .control-group
+          = label_tag :misc_image, nil, class: 'control-label'
+          .controls
+            = f.file_field :uploaded_data
+            = text_field_tag :misc_image            
 
 %hr  
 
@@ -81,10 +87,14 @@
           
             -############### Big Photo ###############
             .page-type.big-photo{:"data-page-type" => "Big Photo"}
-              .control-group
-                = label_tag "Url", nil, class: 'control-label'
-                .controls
-                  = text_field_tag :"big_photo[url]"
+              = form_for(:upload_form, url: create_asset_path, html: { method: :post, class: 'upload-form', |
+                :"data-url-input" => 'big_photo_url', multipart: true }, remote: true ) do |f| |
+                .control-group
+                  = label_tag :"big_photo[url]", nil, class: 'control-label'
+                  .controls
+                    = f.file_field :uploaded_data
+                    = text_field_tag :"big_photo[url]"          
+            
                 
           
             -############### Text and Photo ###############
@@ -93,11 +103,15 @@
                 = label_tag "Text", nil, class: 'control-label'
                 .controls
                   = text_area_tag :"text_and_photo[text]"
-                
-              .control-group
-                = label_tag "Photo Url", nil, class: 'control-label'
-                .controls
-                  = text_field_tag :"text_and_photo[url]"
+                  
+              = form_for(:upload_form, url: create_asset_path, html: { method: :post, class: 'upload-form', |
+                :"data-url-input" => 'text_and_photo_url', multipart: true }, remote: true ) do |f| |
+                .control-group
+                  = label_tag :"text_and_photo[url]", nil, class: 'control-label'
+                  .controls
+                    = f.file_field :uploaded_data
+                    = text_field_tag :"text_and_photo[url]"       
+                  
                 
                 
             -############### Team Bios ###############
@@ -114,15 +128,19 @@
                   = label_tag "Title", nil, class: 'control-label'
                   .controls
                     = text_field_tag :"team_bios[member_#{n}_title]"
-          
-                .control-group
-                  = label_tag "Photo", nil, class: 'control-label'
-                  .controls
-                    = text_field_tag :"team_bios[member_#{n}_photo]"
+                    
+                = form_for(:upload_form, url: create_asset_path, html: { method: :post, class: 'upload-form', |
+                  :"data-url-input" => "team_bios_member_#{n}_photo", multipart: true }, remote: true ) do |f| |
+                  .control-group
+                    = label_tag :"team_bios[member_#{n}_photo]", nil, class: 'control-label'
+                    .controls
+                      = f.file_field :uploaded_data
+                      = text_field_tag :"team_bios[member_#{n}_photo]"         
+                
                   
                   
             -############### Contact Info ###############
-            .page-type.text-and-photo{:"data-page-type" => "Contact Info"}
+            .page-type.contact-info{:"data-page-type" => "Contact Info"}
               .control-group
                 = label_tag "Mailing Address", nil, class: 'control-label'
                 .controls
