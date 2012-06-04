@@ -12,7 +12,11 @@ HubSlideshows::Application.routes.draw do
   match '/signout', to: 'sessions#destroy', via: :delete
   
   match '/new', to: 'frontend#new', via: :get
-  match '/new', to: 'frontend#project_from_json', via: :post, as: 'project_from_json'
+  match '/new', to: 'frontend#new_project_from_json', via: :post, as: 'new_project_from_json'
+  
+  match '/manage/:id', to: 'frontend#edit', via: :get
+  match '/manage/:id', to: 'frontend#update_project_from_json', via: :put, as: 'update_project_from_json'
+  
   
   match '/createasset', to: 'frontend#create_asset', as: 'create_asset'
   

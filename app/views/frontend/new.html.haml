@@ -1,5 +1,5 @@
 - provide(:title, "New Project")
-- provide(:body_class, "new-project")
+- provide(:body_class, "project")
 %h1 Add Project to Slideshow
 %hr
 
@@ -60,126 +60,8 @@
     %a.pull-right.btn.new-slide-btn Add New Slide
 
     .slides#sortable
-      .slide#template-slide
-        .heading
-          .handle
-            %i.icon-align-justify
-          %a.toggle Big Text
-          .delete-slide
-            %i.icon-trash#delete-slide
-          .toggle-display
-            %i.icon-chevron-down
-            %i.icon-chevron-up
-        .content
-          .form-horizontal
-            .control-group
-              = label_tag :page_type, nil, class: 'control-label'
-              .controls
-                = select_tag :page_type, options_for_select(all_page_types), class: 'page-type-select'
-              
-            -############### Big Text ###############
-            .page-type.big-text{:"data-page-type" => "Big Text"}
-              .control-group
-                = label_tag "Text", nil, class: 'control-label'
-                .controls
-                  = text_area_tag :"big_text[text]"
-                
-          
-            -############### Big Photo ###############
-            .page-type.big-photo{:"data-page-type" => "Big Photo"}
-              = form_for(:upload_form, url: create_asset_path, html: { method: :post, class: 'upload-form', |
-                :"data-url-input" => 'big_photo_url', multipart: true }, remote: true ) do |f| |
-                .control-group
-                  = label_tag :"big_photo[url]", nil, class: 'control-label'
-                  .controls
-                    = f.file_field :uploaded_data
-                    = text_field_tag :"big_photo[url]"          
-            
-                
-          
-            -############### Text and Photo ###############
-            .page-type.text-and-photo{:"data-page-type" => "Text and Photo"}
-              .control-group
-                = label_tag "Text", nil, class: 'control-label'
-                .controls
-                  = text_area_tag :"text_and_photo[text]"
-                  
-              = form_for(:upload_form, url: create_asset_path, html: { method: :post, class: 'upload-form', |
-                :"data-url-input" => 'text_and_photo_url', multipart: true }, remote: true ) do |f| |
-                .control-group
-                  = label_tag :"text_and_photo[url]", nil, class: 'control-label'
-                  .controls
-                    = f.file_field :uploaded_data
-                    = text_field_tag :"text_and_photo[url]"       
-                  
-                
-                
-            -############### Team Bios ###############
-            .page-type.team-bios{:"data-page-type" => "Team Bios"}
-              - (1..2).each do |n|
-                %h5 Team member ##{n}
-          
-                .control-group
-                  = label_tag "Name", nil, class: 'control-label'
-                  .controls
-                    = text_field_tag :"team_bios[member_#{n}_name]"
-                  
-                .control-group
-                  = label_tag "Title", nil, class: 'control-label'
-                  .controls
-                    = text_field_tag :"team_bios[member_#{n}_title]"
-                    
-                = form_for(:upload_form, url: create_asset_path, html: { method: :post, class: 'upload-form', |
-                  :"data-url-input" => "team_bios_member_#{n}_photo", multipart: true }, remote: true ) do |f| |
-                  .control-group
-                    = label_tag :"team_bios[member_#{n}_photo]", nil, class: 'control-label'
-                    .controls
-                      = f.file_field :uploaded_data
-                      = text_field_tag :"team_bios[member_#{n}_photo]"         
-                
-                  
-                  
-            -############### Contact Info ###############
-            .page-type.contact-info{:"data-page-type" => "Contact Info"}
-              .control-group
-                = label_tag "Mailing Address", nil, class: 'control-label'
-                .controls
-                  = text_area_tag :"contact_info[mailing_address]", nil, placeholder: "Include company name"
-          
-              .control-group
-                = label_tag "Phone", nil, class: 'control-label'
-                .controls
-                  = text_field_tag :"contact_info[phone]"
-                
-              .control-group
-                = label_tag "Website", nil, class: 'control-label'
-                .controls
-                  .input-prepend
-                    %span.add-on http://
-                    = text_field_tag :"contact_info[website]"
-                
-              .control-group
-                = label_tag "Twitter", nil, class: 'control-label'
-                .controls
-                  .input-prepend
-                    %span.add-on @
-                    = text_field_tag :"contact_info[twitter]"
-                
-              .control-group
-                = label_tag "Facebook", nil, class: 'control-label'
-                .controls
-                  .input-prepend
-                    %span.add-on facebook.com/
-                    = text_field_tag :"contact_info[facebook]"
-                
-              .control-group
-                = label_tag "Blog", nil, class: 'control-label'
-                .controls
-                  .input-prepend
-                    %span.add-on http://
-                    = text_field_tag :"contact_info[blog]"
-          
+      = render 'slide', template_slide: true          
           
 .form-actions
   %button.btn.btn-primary.btn-large#submit-btn{"data-loading-text" => "Saving...", |
-    "data-submit-url" => project_from_json_path, "data-method" => "POST" } Save
+    "data-submit-url" => new_project_from_json_path, "data-method" => "POST" } Save
