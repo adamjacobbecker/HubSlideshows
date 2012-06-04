@@ -1,11 +1,13 @@
 class FrontendController < ApplicationController
+  
+  before_filter :correct_key, only: [:edit, :update_project_from_json]
+  
   def new
     @project = Project.new
     render :layout => 'frontend'
   end
   
   def edit
-    @project = Project.find(params[:id])
     render :layout => 'frontend'
   end
   
@@ -15,7 +17,6 @@ class FrontendController < ApplicationController
   end
   
   def update_project_from_json
-    @project = Project.find(params[:id])
     save_project_json
   end
   
@@ -28,6 +29,11 @@ class FrontendController < ApplicationController
   end
   
   private
+  
+    def correct_key
+      @project = Project.find(params[:id])
+      redirect_to root_path unless @project.key == params[:key]
+    end
   
     def save_project_json
       

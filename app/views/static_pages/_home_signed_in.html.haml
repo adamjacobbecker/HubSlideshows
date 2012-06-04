@@ -14,4 +14,4 @@
       %td
         = link_to 'delete', project, method: :delete
         &middot;
-        = link_to 'edit', edit_project_path(project)
+        = link_to 'edit', edit_project_path(project.id, project.key)

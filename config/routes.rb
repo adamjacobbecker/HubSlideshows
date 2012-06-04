@@ -1,9 +1,6 @@
 HubSlideshows::Application.routes.draw do
   
   resources :sessions, only: [:new, :create, :destroy]
-  resources :projects do
-    resources :pages
-  end
   
   match '/play/:hub_id', to: 'static_pages#play'
   match '/playstatic', to: 'static_pages#play_static'
@@ -11,11 +8,14 @@ HubSlideshows::Application.routes.draw do
   match '/signin', to: 'sessions#new'
   match '/signout', to: 'sessions#destroy', via: :delete
   
-  match '/new', to: 'frontend#new', via: :get
+  
+  match '/project/:id', to: 'projects#destroy', via: :delete, as: 'project'
+  
+  match '/new', to: 'frontend#new', via: :get, as: 'new_project'
   match '/new', to: 'frontend#new_project_from_json', via: :post, as: 'new_project_from_json'
   
-  match '/manage/:id', to: 'frontend#edit', via: :get
-  match '/manage/:id', to: 'frontend#update_project_from_json', via: :put, as: 'update_project_from_json'
+  match '/manage/:id/:key', to: 'frontend#edit', via: :get, as: 'edit_project'
+  match '/manage/:id/:key', to: 'frontend#update_project_from_json', via: :put, as: 'update_project_from_json'
   
   
   match '/createasset', to: 'frontend#create_asset', as: 'create_asset'

@@ -45,7 +45,7 @@
             = f.file_field :uploaded_data
             = text_field_tag :misc_image, @project.misc_image        
 
-%hr  
+%hr
 
 %h2 Slides
 
@@ -67,4 +67,4 @@
           
 .form-actions
   %button.btn.btn-primary.btn-large#submit-btn{"data-loading-text" => "Saving...", |
-    "data-submit-url" => update_project_from_json_path(@project.id), "data-method" => "PUT" } Save
+    "data-submit-url" => update_project_from_json_path(@project.id, @project.key), "data-method" => "PUT" } Save

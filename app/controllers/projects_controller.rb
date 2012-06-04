@@ -2,18 +2,6 @@ class ProjectsController < ApplicationController
   
   before_filter :correct_hub
   
-  def edit
-    @all_hubs = Hub.all
-    @pages = @project.pages
-  end
-  
-  def update
-    @project.update_attributes(params[:project])
-    @project.hub_id = params[:hub]
-    @project.save
-    redirect_to edit_project_path(@project), flash: { success: "Project updated!" }
-  end
-
   def destroy
     @project = Project.find(params[:id])
     @project.destroy
