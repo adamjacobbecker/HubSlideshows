@@ -17,7 +17,7 @@
       .control-group
         = label_tag :hub_id, nil, class: 'control-label'
         .controls
-          = select_tag :hub_id, options_for_select(all_hubs)
+          = select_tag :hub_id, options_for_select(all_hubs, @project.hub_id)
 
       .control-group
         = label_tag :name, nil, class: 'control-label'
@@ -67,4 +67,5 @@
           
 .form-actions
   %button.btn.btn-primary.btn-large#submit-btn{"data-loading-text" => "Saving...", |
+    "data-saved-text" => "Saved!", |
     "data-submit-url" => update_project_from_json_path(@project.id, @project.key), "data-method" => "PUT" } Save
