@@ -1,123 +1,137 @@
 @import "bootstrap";
 
 body {
-    
     padding-top: 60px;
-    
+
     a {
         cursor: pointer;
     }
     
     &.project {
         
-        .new-slide-btn {
-            margin-bottom: 10px;
-        }
-        
-        .slides {
-            clear: both;
+        #project-page {
             
-            .slide {
-                
-                padding: 5px 0;
-                
-                &#template-slide {
-                    display: none;
-                }
-                
-                .heading {
-                    border: 1px solid #e5e5e5;
-                    border-radius: 4px;
-                    position: relative;
-                    
-                    .handle {
-                        position: absolute;
-                        top: 8px;
-                        left: 8px;
-                        opacity: 0.3;
-                        cursor: pointer;
+            .new-slide-btn {
+                margin-bottom: 10px;
+            }
+
+            .slides {
+                clear: both;
+
+                .slide {
+
+                    padding: 5px 0;
+
+                    &#template-slide {
+                        display: none;
                     }
 
-                    
-                    a {
-                        padding: 8px 15px 8px 29px;
-                        display: block;
-                    }
-                    
-                    .delete-slide {
-                        position: absolute;
-                        right: 30px;
-                        top: 10px;
-                        
-                        i.icon-trash {
-                            display: none;
-                            cursor: pointer;
-                            opacity: 0.6;
-                        }
-                    }
-                    
-                    .toggle-display {
-                        
-                        position: absolute;
-                        right: 10px;
-                        top: 10px;
-
-                        i.icon-chevron-down {
-                            display: none;
-                        }
-                        
-                    }
-                    
-                    
-                }
-                
-                .content {
-                    display: none;
-                    width: 90%;
-                    margin: 0 auto;
-                    border: 1px solid #e5e5e5;
-                    border-top: 0;
-                    border-bottom-left-radius: 4px;
-                    border-bottom-right-radius: 4px;
-                    padding: 10px;
-                    
-                    textarea {
-                        height: 140px;
-                        width: 370px;
-                    }
-                    
-                    .page-type {
-                        // display: none;
-                    }
-                    
-                }
-                
-                &.active {
                     .heading {
-                        .toggle-display {
-                            i.icon-chevron-down {
-                                display: block;
+                        border: 1px solid #e5e5e5;
+                        border-radius: 4px;
+                        position: relative;
+
+                        .handle {
+                            position: absolute;
+                            top: 8px;
+                            left: 8px;
+                            opacity: 0.3;
+                            cursor: pointer;
+                        }
+
+
+                        a {
+                            padding: 8px 15px 8px 29px;
+                            display: block;
+                        }
+
+                        .delete-slide {
+                            position: absolute;
+                            right: 30px;
+                            top: 10px;
+
+                            i.icon-trash {
+                                display: none;
+                                cursor: pointer;
+                                opacity: 0.6;
                             }
-                            i.icon-chevron-up {
+                        }
+
+                        .toggle-display {
+
+                            position: absolute;
+                            right: 10px;
+                            top: 10px;
+
+                            i.icon-chevron-down {
                                 display: none;
                             }
+
                         }
+
+
                     }
-                }
-                
-                &:hover {
-                    .heading {
-                        .delete-slide {
-                            i.icon-trash {
-                                display: block;
+
+                    .content {
+                        display: none;
+                        width: 90%;
+                        margin: 0 auto;
+                        border: 1px solid #e5e5e5;
+                        border-top: 0;
+                        border-bottom-left-radius: 4px;
+                        border-bottom-right-radius: 4px;
+                        padding: 10px;
+
+                        textarea {
+                            height: 140px;
+                            width: 370px;
+                        }
+
+                        .page-type {
+                            // display: none;
+                        }
+
+                    }
+
+                    &.active {
+                        .heading {
+                            .toggle-display {
+                                i.icon-chevron-down {
+                                    display: block;
+                                }
+                                i.icon-chevron-up {
+                                    display: none;
+                                }
                             }
                         }
                     }
+
+                    &:hover {
+                        .heading {
+                            .delete-slide {
+                                i.icon-trash {
+                                    display: block;
+                                }
+                            }
+                        }
+                    }
+
                 }
-                
+
             }
             
+            .form-actions {
+                .saved {
+                    display: none;
+                    font-size: 14px;
+                    color: #444;
+                    padding-left: 10px;
+                }
+            }
         }
-
+        
+        #success-page {
+            display: none;
+        }
     }
 }

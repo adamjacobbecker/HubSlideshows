@@ -1,71 +1,74 @@
 - provide(:title, "Edit Project #{@project.name}")
 - provide(:body_class, "project")
+
 %h1= "Edit Project #{@project.name}"
 %hr
 
-%h2 Basic info
+#project-page
 
-.row
+  %h2 Basic info
 
-  .span3
-    First, give us some basic info
-    about your project or organization.
+  .row
+
+    .span3
+      First, give us some basic info
+      about your project or organization.
   
-  .span9
-    .form-horizontal
+    .span9
+      .form-horizontal
 
-      .control-group
-        = label_tag :hub_id, nil, class: 'control-label'
-        .controls
-          = select_tag :hub_id, options_for_select(all_hubs, @project.hub_id)
-
-      .control-group
-        = label_tag :name, nil, class: 'control-label'
-        .controls
-          = text_field_tag :name, @project.name
-
-      .control-group
-        = label_tag :email, nil, class: 'control-label'
-        .controls
-          = text_field_tag :email, @project.email
-      
-      = form_for(:upload_form, url: create_asset_path, html: { method: :post, class: 'upload-form', |
-        :"data-url-input" => 'logo', multipart: true }, remote: true ) do |f| |
         .control-group
-          = label_tag :logo, nil, class: 'control-label'
+          = label_tag :hub_id, nil, class: 'control-label'
           .controls
-            = f.file_field :uploaded_data
-            = text_field_tag :logo, @project.logo         
+            = select_tag :hub_id, options_for_select(all_hubs, @project.hub_id)
 
-      = form_for(:upload_form, url: create_asset_path, html: { method: :post, class: 'upload-form', |
-        :"data-url-input" => 'misc_image', multipart: true }, remote: true ) do |f| |
         .control-group
-          = label_tag :misc_image, nil, class: 'control-label'
+          = label_tag :name, nil, class: 'control-label'
           .controls
-            = f.file_field :uploaded_data
-            = text_field_tag :misc_image, @project.misc_image        
+            = text_field_tag :name, @project.name
 
-%hr
-
-%h2 Slides
-
-.row
-
-  .span3
-    Now, configure the slides of
-    your presentation. You can drag
-    them to change the order.
-
-  .span9
-    %a.pull-right.btn.new-slide-btn Add New Slide
-
-    .slides#sortable
-      = render 'slide', template_slide: true
+        .control-group
+          = label_tag :email, nil, class: 'control-label'
+          .controls
+            = text_field_tag :email, @project.email
       
-      - @project.pages.each do |page|
-        = render 'slide', template_slide: false, page: page
+        = form_for(:upload_form, url: create_asset_path, html: { method: :post, class: 'upload-form', |
+          :"data-url-input" => 'logo', multipart: true }, remote: true ) do |f| |
+          .control-group
+            = label_tag :logo, nil, class: 'control-label'
+            .controls
+              = f.file_field :uploaded_data
+              = text_field_tag :logo, @project.logo         
+
+        = form_for(:upload_form, url: create_asset_path, html: { method: :post, class: 'upload-form', |
+          :"data-url-input" => 'misc_image', multipart: true }, remote: true ) do |f| |
+          .control-group
+            = label_tag :misc_image, nil, class: 'control-label'
+            .controls
+              = f.file_field :uploaded_data
+              = text_field_tag :misc_image, @project.misc_image        
+
+  %hr
+
+  %h2 Slides
+
+  .row
+
+    .span3
+      Now, configure the slides of
+      your presentation. You can drag
+      them to change the order.
+
+    .span9
+      %a.pull-right.btn.new-slide-btn Add New Slide
+
+      .slides#sortable
+        = render 'slide', template_slide: true
+      
+        - @project.pages.each do |page|
+          = render 'slide', template_slide: false, page: page
           
-.form-actions
-  %button.btn.btn-primary.btn-large#submit-btn{"data-loading-text" => "Saving...", |
-    "data-saved-text" => "Saved!", |
-    "data-submit-url" => update_project_from_json_path(@project.id, @project.key), "data-method" => "PUT" } Save
+  .form-actions
+    %button.btn.btn-primary.btn-large#submit-btn{"data-loading-text" => "Saving...", |
+      "data-submit-url" => update_project_from_json_path(@project.id, @project.key), "data-method" => "PUT" } Save
+    %span.saved Saved changes!

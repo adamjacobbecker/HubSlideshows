@@ -4,13 +4,15 @@
       %a.brand{href: '/'} Hub Slideshows
       .nav-collapse
         %ul.nav.pull-right
-          %li
+          %li 
             - if signed_in?
               %li.dropdown
                 %a.dropdown-toggle{ href: "#", :"data-toggle" => "dropdown" }
                   = current_hub.name
                   %b.caret  
                 %ul.dropdown-menu
+                  %li
+                    = link_to 'Play Slideshow', play_path(current_hub)
                   %li
                     = link_to 'Sign out', signout_path, method: :delete
             - else

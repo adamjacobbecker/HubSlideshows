@@ -32,14 +32,14 @@ $(document).on 'click', '.new-slide-btn', ->
     .trigger('click')
   
 $(document).on 'click', '#delete-slide', ->
-  if confirm("Are you sure?")
+  if confirm("Are you sure you want to delete this slide?")
     $(this).closest('.slide').remove()
     
     
 $(document).on 'click', '#submit-btn', (e) ->
   e.preventDefault()
   el = $(this)
-  # el.button('loading')
+  el.button('loading')
   project = {
     hub_id: $("#hub_id").val(),
     name: $("#name").val(),
@@ -90,8 +90,28 @@ $(document).on 'click', '#submit-btn', (e) ->
     data: 
       project: JSON.stringify(project),
     success: (data) ->
-      alert(data)
-    
+      if el.data('method') == 'POST'
+        if data.edit_project_path
+          el.button 'reset'
+          $("#project-page").slideUp 500, ->
+            $("#success-page").fadeIn 300
+          $("#edit-project-path")
+            .html(data.edit_project_path)
+            .attr('href', data.edit_project_path)
+        else
+          alert 'Dang, an error occured.'
+          el.button 'reset'
+      else
+        if data.edit_project_path
+          el.button 'reset'
+          el.parent()
+            .find('.saved')
+            .show()
+            .delay('2000')
+            .fadeOut('200')
+        else
+          alert 'Dang, an error occured.'
+          el.button 'reset'
   
 $ ->
   $(".page-type-select").trigger('change')

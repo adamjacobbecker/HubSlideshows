@@ -1,4 +1,20 @@
-- if !signed_in?
-  = render 'home_signed_out'
-- else
-  = render 'home_signed_in'
+%h1 
+  Projects for #{current_hub.name}
+  %span.pull-right
+    %a.btn.btn-success{ href: play_path(current_hub) } Play Slideshow
+
+%table.table.table-bordered.table-striped
+  %tr
+    %th Project Name
+    %th Email
+    %th Key
+    %th Actions
+  - @projects.each do |project|
+    %tr
+      %td= project.name
+      %td= project.email
+      %td= project.key
+      %td
+        = link_to 'delete', project, method: :delete, confirm: "Are you sure you want to delete this project?"
+        &middot;
+        = link_to 'edit', edit_project_path(project.id, project.key)

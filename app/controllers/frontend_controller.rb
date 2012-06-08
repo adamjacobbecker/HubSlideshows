@@ -60,10 +60,10 @@ class FrontendController < ApplicationController
 
         end
 
-        render :text => @project.id
+        render :json => { id: @project.id, edit_project_path: edit_project_url(@project.id, @project.key) }
 
       else
-        render :text => @project.errors.each {|x| x}
+        render :json => { errors: @project.errors.each {|x| x} }
       end
       
     end

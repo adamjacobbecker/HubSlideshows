@@ -2,6 +2,8 @@ class StaticPagesController < ApplicationController
   def home
     if signed_in?
       @projects = current_hub.projects.all
+    else
+      redirect_to signin_path
     end
   end
   

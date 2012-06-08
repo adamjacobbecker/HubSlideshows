@@ -1,67 +1,76 @@
 - provide(:title, "New Project")
 - provide(:body_class, "project")
+
 %h1 Add Project to Slideshow
 %hr
 
-%h2 Basic info
+#project-page
 
-.row
+  %h2 Basic info
 
-  .span3
-    First, give us some basic info
-    about your project or organization.
+  .row
+
+    .span3
+      First, give us some basic info
+      about your project or organization.
   
-  .span9
-    .form-horizontal
+    .span9
+      .form-horizontal
 
-      .control-group
-        = label_tag :hub_id, nil, class: 'control-label'
-        .controls
-          = select_tag :hub_id, options_for_select(all_hubs)
+        .control-group
+          = label_tag :hub_id, nil, class: 'control-label'
+          .controls
+            = select_tag :hub_id, options_for_select(all_hubs)
 
-      .control-group
-        = label_tag :name, nil, class: 'control-label'
-        .controls
-          = text_field_tag :name
+        .control-group
+          = label_tag :name, nil, class: 'control-label'
+          .controls
+            = text_field_tag :name
 
-      .control-group
-        = label_tag :email, nil, class: 'control-label'
-        .controls
-          = text_field_tag :email
+        .control-group
+          = label_tag :email, nil, class: 'control-label'
+          .controls
+            = text_field_tag :email
       
-      = form_for(:upload_form, url: create_asset_path, html: { method: :post, class: 'upload-form', |
-        :"data-url-input" => 'logo', multipart: true }, remote: true ) do |f| |
-        .control-group
-          = label_tag :logo, nil, class: 'control-label'
-          .controls
-            = f.file_field :uploaded_data
-            = text_field_tag :logo            
+        = form_for(:upload_form, url: create_asset_path, html: { method: :post, class: 'upload-form', |
+          :"data-url-input" => 'logo', multipart: true }, remote: true ) do |f| |
+          .control-group
+            = label_tag :logo, nil, class: 'control-label'
+            .controls
+              = f.file_field :uploaded_data
+              = text_field_tag :logo            
 
-      = form_for(:upload_form, url: create_asset_path, html: { method: :post, class: 'upload-form', |
-        :"data-url-input" => 'misc_image', multipart: true }, remote: true ) do |f| |
-        .control-group
-          = label_tag :misc_image, nil, class: 'control-label'
-          .controls
-            = f.file_field :uploaded_data
-            = text_field_tag :misc_image            
+        = form_for(:upload_form, url: create_asset_path, html: { method: :post, class: 'upload-form', |
+          :"data-url-input" => 'misc_image', multipart: true }, remote: true ) do |f| |
+          .control-group
+            = label_tag :misc_image, nil, class: 'control-label'
+            .controls
+              = f.file_field :uploaded_data
+              = text_field_tag :misc_image            
 
-%hr  
+  %hr  
 
-%h2 Slides
+  %h2 Slides
 
-.row
+  .row
 
-  .span3
-    Now, configure the slides of
-    your presentation. You can drag
-    them to change the order.
+    .span3
+      Now, configure the slides of
+      your presentation. You can drag
+      them to change the order.
 
-  .span9
-    %a.pull-right.btn.new-slide-btn Add New Slide
+    .span9
+      %a.pull-right.btn.new-slide-btn Add New Slide
 
-    .slides#sortable
-      = render 'slide', template_slide: true          
+      .slides#sortable
+        = render 'slide', template_slide: true          
           
-.form-actions
-  %button.btn.btn-primary.btn-large#submit-btn{"data-loading-text" => "Saving...", |
-    "data-submit-url" => new_project_from_json_path, "data-method" => "POST" } Save
+  .form-actions
+    %button.btn.btn-primary.btn-large#submit-btn{"data-loading-text" => "Saving...", |
+      "data-submit-url" => new_project_from_json_path, "data-method" => "POST" } Save
+
+#success-page
+  .alert.alert-success
+    %strong Project saved!
+    Keep this link to edit it in the future:
+    %a#edit-project-path

@@ -2,7 +2,7 @@ HubSlideshows::Application.routes.draw do
   
   resources :sessions, only: [:new, :create, :destroy]
   
-  match '/play/:hub_id', to: 'static_pages#play'
+  match '/play/:hub_id', to: 'static_pages#play', as: 'play'
   match '/playstatic', to: 'static_pages#play_static'
   
   match '/signin', to: 'sessions#new'
