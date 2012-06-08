@@ -10,7 +10,6 @@ module SlideshowHelper
   end
 
   def after_page
-  
     if @slide_params[:page_count] % 3 == 0
       @slide_params[:x] -= 2000
     else
@@ -25,16 +24,8 @@ module SlideshowHelper
   end
 
   def after_project    
- 
-    @slide_params[:x] = @slide_params[:orig_x] + 3500
-    
-   # if @slide_params[:page_count] == 3
-   #   @slide_params[:x] -= 1000
-   # elsif @slide_params[:page_count] <= 2
-   #   @slide_params[:x] -= 1500      
-   # end
-    
-    @slide_params[:y] = @slide_params[:orig_y]   
+    @slide_params[:x] = @slide_params[:orig_x]    
+    @slide_params[:y] = @slide_params[:orig_y] + 3000
     
     @slide_params[:page_count] = 1
     @slide_params[:project_count] += 1

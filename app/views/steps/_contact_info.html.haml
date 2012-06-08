@@ -1,12 +1,12 @@
 .contact-info
-  .mailing-address= simple_format(page.content[:mailing_address])
-  .phone= page.content[:phone]
+  .mailing-address= simple_format(page.content["mailing_address"])
+  .phone= page.content["phone"]
   .website
-    %a{href: "#"}= page.content[:website]
-  .twitter= page.content[:twitter]
+    %a{href: "#"}= page.content["website"]
+  .twitter= page.content["twitter"]
   .facebook 
     facebook.com/
     %br
-    = page.content[:facebook]
+    = page.content["facebook"]
   .blog
-    %a{href: "#"}= page.content[:blog]
+    %a{href: "#"}= page.content["blog"]

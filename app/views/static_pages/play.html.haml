@@ -12,7 +12,7 @@
   
     //big overview step-# data-scale * 30 = data-x
     
-    .step{"id" => "members", "data-x" => 8000, "data-y" => -2000, "data-rotate-x" => "45", "data-scale" => "27", "data-rotate" => 180}
+    .step{"id" => "members", "data-x" => "1100", "data-y" => -4000, "data-rotate-x" => "45", "data-scale" => 4}
       Our #{@hub.name} Members    
     
     - @hub.projects.all.each do |project|
@@ -32,7 +32,7 @@
           - after_page
           
       //overview step
-      .step{"data-x" => @slide_params[:orig_x] + 1000, "data-y" => @slide_params[:orig_y] + 300, "data-scale" => "2.5"}
+      .step{"data-x" => @slide_params[:orig_x] + 1000, "data-y" => @slide_params[:orig_y] + 400, "data-scale" => "2.5"}
       
       - after_project  
 

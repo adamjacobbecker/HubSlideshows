@@ -5,9 +5,9 @@
   %h3 Team
   .members
     - (1..2).each do |n|
-      - if page.content[:"member_#{n}_name"]
+      - if page.content["member_#{n}_name"]
         .member
           .picture
-            %img{ "src" => "/images/upload/#{page.content[:"member_#{n}_photo"]}" }
-          .name= page.content[:"member_#{n}_name"]
-          .title= page.content[:"member_#{n}_title"]
+            %img{ "src" => "/images/upload/#{page.content["member_#{n}_photo"]}" }
+          .name= page.content["member_#{n}_name"]
+          .title= page.content["member_#{n}_title"]
