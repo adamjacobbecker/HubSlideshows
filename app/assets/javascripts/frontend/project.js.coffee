@@ -14,13 +14,14 @@ $(document).on 'change', '.upload-form', ->
   $(this).ajaxSubmit
     beforeSubmit: (a,f,o) ->
       o.dataType = 'json'
-    complete: (x, t) ->
-      console.log(x.responseText)
-      if el.closest('.slide').length > 0
-        el.closest('.slide').find('#' + el.data('url-input')).val(x.responseText)
-      else        
-        target.val(x.responseText)
-
+    success: (data) ->
+      if data.asset_url
+        if el.closest('.slide').length > 0
+          el.closest('.slide').find('#' + el.data('url-input')).val(data.asset_url)
+        else        
+          target.val(data.asset_url)
+      else
+        alert 'Sorry, an error occured.'
 
 
 $(document).on 'click', '.new-slide-btn', ->

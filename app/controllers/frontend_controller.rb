@@ -21,17 +21,14 @@ class FrontendController < ApplicationController
   end
   
   def create_asset
-    # name = Digest::SHA1.hexdigest(Time.now.to_s.split(//).sort_by {rand}.join) + ".jpg"
-    # directory = "public/images/upload"
-    # path = File.join(directory, name)
-    # File.open(path, "wb") { |f| f.write(params[:upload_form][:uploaded_data].read) }
-    # render :text => name
-    
     uploader = FileUploader.new
-    uploader.store!(params[:upload_form][:uploaded_data])
-    render :text => uploader.url
-    
-    
+    begin
+      uploader.store!(params[:upload_form][:uploaded_data])
+      render :json => { asset_url: uploader.url }
+    rescue CarrierWave::IntegrityError
+      render :json => { error: 'Error!' }
+    end
+  
   end
   
   private
