@@ -24,9 +24,13 @@ $(document).on 'change', '.upload-form', ->
 
 
 $(document).on 'click', '.new-slide-btn', ->
+  $('.slide')
+    .removeClass('active')
+    .find('.content').slideUp(100)
+  
   $("#template-slide")
     .clone()
-    .prependTo('.slides')
+    .appendTo('.slides')
     .attr('id', '')
     .find('.heading a.toggle')
     .trigger('click')
