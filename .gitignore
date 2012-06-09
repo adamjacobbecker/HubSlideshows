@@ -14,6 +14,6 @@
 /log/*.log
 /tmp
 
-uploads/project/*
+public/uploads/project/*
 
 *.DS_Store
