@@ -150,8 +150,18 @@ body {
         }
     }
 
-    .checkbox {
+    
+    .remove {
         display: none;
+    }
+    
+    .image-anchor {
+        display: none;
+
+        img {
+            width: 200px;
+        }
+        
     }
     
     &.uploading {
@@ -161,8 +171,15 @@ body {
     }
     
     &.uploaded {
-        .checkbox {
+        .remove {
             display: inline;
+        }
+        .image-anchor {
+            display: block;
+        }
+        
+        input[type=file] {
+            display: none;
         }
     }
 }
