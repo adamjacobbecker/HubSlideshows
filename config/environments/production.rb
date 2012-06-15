@@ -49,6 +49,9 @@ HubSlideshows::Application.configure do
   config.assets.precompile += %w( slideshow.js )
   config.assets.precompile += %w( slideshow.css )
 
+  config.assets.precompile += %w( frontend.js )
+  config.assets.precompile += %w( frontend.css )
+
   # Disable delivery errors, bad email addresses will be ignored
   # config.action_mailer.raise_delivery_errors = false
 
