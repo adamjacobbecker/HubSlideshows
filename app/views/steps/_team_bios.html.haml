@@ -1,13 +1,13 @@
 .team-bios
   .corner
     - if project.misc_image
-      %img{"src" => "/images/upload/#{project.misc_image}" }
+      %img{"src" => project.misc_image}
   %h3 Team
   .members
     - (1..2).each do |n|
-      - if page.content["member_#{n}_name"]
+      - if !page.content["member_#{n}_name"].blank?
         .member
           .picture
-            %img{ "src" => "/images/upload/#{page.content["member_#{n}_photo"]}" }
+            %img{ "src" => page.content["member_#{n}_photo"] }
           .name= page.content["member_#{n}_name"]
           .title= page.content["member_#{n}_title"]
