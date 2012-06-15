@@ -21,7 +21,18 @@ class FrontendController < ApplicationController
   end
   
   def create_asset
-    uploader = FileUploader.new
+    
+    case params[:upload_form][:type]
+    when 'photo'
+      uploader = PhotoUploader.new
+    when 'logo'
+      uploader = LogoUploader.new
+    when 'misc_image'
+      uploader = MiscImageUploader.new
+    when 'avatar'
+      uploader = AvatarUploader.new
+    end
+    
     begin
       uploader.store!(params[:upload_form][:uploaded_data])
       render :json => { asset_url: uploader.url }
