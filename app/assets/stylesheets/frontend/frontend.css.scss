@@ -136,6 +136,34 @@ body {
     }
 }
 
-.file-info {
-    font-style: italic;
+
+.controls.file-controls {
+    .file-info {
+        font-style: italic;
+    }
+    
+    .spinner {
+        display: none;
+        img {
+            width: 20px;
+            margin-bottom: -5px;
+        }
+    }
+
+    .checkbox {
+        display: none;
+    }
+    
+    &.uploading {
+        .spinner {
+            display: inline;
+        }
+    }
+    
+    &.uploaded {
+        .checkbox {
+            display: inline;
+        }
+    }
 }
+

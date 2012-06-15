@@ -31,10 +31,11 @@
           :"data-url-input" => 'big_photo_url', multipart: true }, remote: true ) do |f| |
           .control-group
             = label_tag :"big_photo[url]", 'Photo', class: 'control-label'
-            .controls
+            .controls.file-controls
               = f.hidden_field :type, value: 'photo'
               = f.file_field :uploaded_data
-              = text_field_tag :"big_photo[url]", (page.content["url"] if page.page_type == "Big Photo")       
+              = render 'upload_feedback'
+              = hidden_field_tag :"big_photo[url]", (page.content["url"] if page.page_type == "Big Photo")       
           
     
       -############### Text and Photo ###############
@@ -48,10 +49,11 @@
           :"data-url-input" => 'text_and_photo_url', multipart: true }, remote: true ) do |f| |
           .control-group
             = label_tag :"text_and_photo[url]", 'Photo', class: 'control-label'
-            .controls
+            .controls.file-controls
               = f.hidden_field :type, value: 'photo'
               = f.file_field :uploaded_data
-              = text_field_tag :"text_and_photo[url]", (page.content["url"] if page.page_type == "Text and Photo")      
+              = render 'upload_feedback'
+              = hidden_field_tag :"text_and_photo[url]", (page.content["url"] if page.page_type == "Text and Photo")      
             
           
           
@@ -74,10 +76,12 @@
             :"data-url-input" => "team_bios_member_#{n}_photo", multipart: true }, remote: true ) do |f| |
             .control-group
               = label_tag :"team_bios[member_#{n}_photo]", 'Photo', class: 'control-label'
-              .controls
+              .controls.file-controls
                 = f.hidden_field :type, value: 'avatar'
                 = f.file_field :uploaded_data
-                = text_field_tag :"team_bios[member_#{n}_photo]", (page.content["member_#{n}_photo"] if page.page_type == "Team Bios")       
+                = render 'upload_feedback'
+                = hidden_field_tag :"team_bios[member_#{n}_photo]", |
+                  (page.content["member_#{n}_photo"] if page.page_type == "Team Bios") |    
                 .file-info
                   We'll crop this to 200x200px.
           

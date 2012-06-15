@@ -28,19 +28,21 @@
         :"data-url-input" => 'logo', multipart: true }, remote: true ) do |f| |
         .control-group
           = label_tag :logo, nil, class: 'control-label'
-          .controls
+          .controls.file-controls
             = f.hidden_field :type, value: 'logo'
             = f.file_field :uploaded_data
-            = text_field_tag :logo, @project.logo    
+            = render 'upload_feedback'
+            = hidden_field_tag :logo, @project.logo    
 
       = form_for(:upload_form, url: create_asset_path, html: { method: :post, class: 'upload-form', |
         :"data-url-input" => 'misc_image', multipart: true }, remote: true ) do |f| |
         .control-group
           = label_tag :misc_image, nil, class: 'control-label'
-          .controls
+          .controls.file-controls
             = f.hidden_field :type, value: 'misc_image'
             = f.file_field :uploaded_data
-            = text_field_tag :misc_image, @project.misc_image  
+            = render 'upload_feedback'
+            = hidden_field_tag :misc_image, @project.misc_image  
             .file-info
               Will be shrunk and used in the corner of each slide.
                

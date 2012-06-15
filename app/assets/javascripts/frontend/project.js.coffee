@@ -14,12 +14,16 @@ $(document).on 'change', '.upload-form', ->
   $(this).ajaxSubmit
     beforeSubmit: (a,f,o) ->
       o.dataType = 'json'
+      el.find('.file-controls').addClass 'uploading'
     success: (data) ->
       if data.asset_url
         if el.closest('.slide').length > 0
           el.closest('.slide').find('#' + el.data('url-input')).val(data.asset_url)
         else        
           target.val(data.asset_url)
+        
+        el.find('.file-controls').removeClass 'uploading'
+        el.find('.file-controls').addClass 'uploaded'
       else
         alert 'Sorry, an error occured.'
 
