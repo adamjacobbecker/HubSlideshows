@@ -115,9 +115,7 @@ $(document).on 'click', '#submit-btn', (e) ->
         slide.content.member_2_photo = slideEl.find("#team_bios_member_2_photo").val()
         
     project.slides.push(slide)
-      
-  console.log(project)    
-  
+        
   $.ajax el.data('submit-url'),
     type: el.data('method'),
     data: 
