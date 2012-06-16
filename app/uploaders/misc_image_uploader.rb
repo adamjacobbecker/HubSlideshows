@@ -12,8 +12,6 @@ class MiscImageUploader < CarrierWave::Uploader::Base
      @name ||= "#{SecureRandom.uuid}.#{file.extension}" if original_filename.present?
   end
   
-  storage :file
-
   def store_dir
     "uploads/project/"
   end
