@@ -8,13 +8,18 @@
   %tr
     %th Project Name
     %th Email
-    %th Key
+    %th Approved?
     %th Actions
   - @projects.each do |project|
     %tr
       %td= project.name
       %td= project.email
-      %td= project.key
+      %td
+        = project.approved ? 'Yes' : 'No'
+        - if project.approved
+          = link_to '(Unapprove)', toggle_project_approval_path(project.id), method: :post
+        - else
+          = link_to '(Approve)', toggle_project_approval_path(project.id), method: :post
       %td
         = link_to 'delete', project, method: :delete, confirm: "Are you sure you want to delete this project?"
         &middot;

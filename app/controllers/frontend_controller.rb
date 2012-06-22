@@ -58,6 +58,8 @@ class FrontendController < ApplicationController
       @project.email = project["email"]
       @project.logo = project["logo"]
       @project.misc_image = project["misc_image"]
+      
+      @project.approved = false
 
       if @project.save
         

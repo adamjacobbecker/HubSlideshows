@@ -12,6 +12,7 @@ HubSlideshows::Application.routes.draw do
   
   
   match '/project/:id', to: 'projects#destroy', via: :delete, as: 'project'
+  match '/project/:id/toggleapproval', to: 'projects#toggle_approval', via: :post, as: 'toggle_project_approval'
   
   match '/new', to: 'frontend#new', via: :get, as: 'new_project'
   match '/new', to: 'frontend#new_project_from_json', via: :post, as: 'new_project_from_json'

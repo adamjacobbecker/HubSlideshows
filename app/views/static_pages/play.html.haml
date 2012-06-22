@@ -15,7 +15,7 @@
     .step{"id" => "members", "data-x" => "1100", "data-y" => -4000, "data-rotate-x" => "45", "data-scale" => 4}
       Our #{@hub.name} Members    
     
-    - @hub.projects.all.each do |project|
+    - @projects.each do |project|
     
       - before_project
     

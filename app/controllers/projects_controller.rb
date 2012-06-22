@@ -8,6 +8,12 @@ class ProjectsController < ApplicationController
     redirect_to root_path
   end
   
+  def toggle_approval
+    @project = Project.find(params[:id])
+    @project.toggle(:approved).save
+    redirect_to root_path
+  end
+  
   private
   
     def correct_hub
