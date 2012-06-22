@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120528214943) do
+ActiveRecord::Schema.define(:version => 20120622012126) do
 
   create_table "hubs", :force => true do |t|
     t.string   "name"
@@ -39,6 +39,7 @@ ActiveRecord::Schema.define(:version => 20120528214943) do
     t.datetime "updated_at", :null => false
     t.string   "logo"
     t.string   "misc_image"
+    t.boolean  "approved"
   end
 
 end
