@@ -33,6 +33,8 @@
             = f.file_field :uploaded_data
             = render 'upload_feedback', image_url: @project.logo
             = hidden_field_tag :logo, @project.logo, class: 'file-url'  
+            .file-info
+              Currently not displayed, upload a file below instead.
 
       = form_for(:upload_form, url: create_asset_path, html: { method: :post, class: 'upload-form', |
         :"data-url-input" => 'misc_image', multipart: true }, remote: true ) do |f| |
