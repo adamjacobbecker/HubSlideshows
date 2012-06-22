@@ -10,4 +10,8 @@ $ ->
     moveCenterToLeft($(this))
     
   impress().init()
+  
+  setInterval ->
+    impress().next()
+  , 7000
     
