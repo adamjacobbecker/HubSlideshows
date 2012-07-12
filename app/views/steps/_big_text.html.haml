@@ -2,5 +2,5 @@
   .corner
     - if project.misc_image
       %img{"src" => project.misc_image}
-  %p= page.content["text"]
+  %p= simple_format(page.content["text"])
     
