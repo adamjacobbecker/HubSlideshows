@@ -14,6 +14,7 @@ class FrontendController < ApplicationController
   def new_project_from_json
     @project = Project.new
     save_project_json
+    UserMailer.project_created(@project).deliver
   end
   
   def update_project_from_json
