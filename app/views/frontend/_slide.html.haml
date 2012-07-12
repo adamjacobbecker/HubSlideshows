@@ -37,7 +37,20 @@
               = render 'upload_feedback', image_url: (page.content["url"] if page.page_type == "Big Photo")
               = hidden_field_tag :"big_photo[url]", (page.content["url"] if page.page_type == "Big Photo"), |
                   class: 'file-url' |
-          
+        
+      -############### Logo ###############
+      .page-type.big-photo{:"data-page-type" => "Logo"}
+        = form_for(:upload_form, url: create_asset_path, html: { method: :post, class: 'upload-form', |
+          :"data-url-input" => 'logo_url', multipart: true }, remote: true ) do |f| |
+          .control-group
+            = label_tag :"logo[url]", 'Photo', class: 'control-label'
+            .controls.file-controls{class: ('uploaded' if page.page_type == "Logo" && !page.content["url"].blank?)}
+              = f.hidden_field :type, value: 'photo'
+              = f.file_field :uploaded_data
+              = render 'upload_feedback', image_url: (page.content["url"] if page.page_type == "Logo")
+              = hidden_field_tag :"logo[url]", (page.content["url"] if page.page_type == "Logo"), |
+                  class: 'file-url' |
+
     
       -############### Text and Photo ###############
       .page-type.text-and-photo{:"data-page-type" => "Text and Photo"}

@@ -100,6 +100,8 @@ $(document).on 'click', '#submit-btn', (e) ->
         slide.content.text = slideEl.find("#big_text_text").val()
       when "Big Photo" 
         slide.content.url = slideEl.find("#big_photo_url").val()
+      when "Logo" 
+        slide.content.url = slideEl.find("#logo_url").val()
       when "Text and Photo" 
         slide.content.text = slideEl.find("#text_and_photo_text").val()
         slide.content.url = slideEl.find("#text_and_photo_url").val()
