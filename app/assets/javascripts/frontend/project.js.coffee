@@ -53,16 +53,20 @@ $(document).on 'click', '.file-controls .remove > a', ->
 
 
 $(document).on 'click', '.new-slide-btn', ->
-  $('.slide')
-    .removeClass('active')
-    .find('.content').slideUp(100)
-  
-  $("#template-slide")
-    .clone()
-    .appendTo('.slides')
-    .attr('id', '')
-    .find('.heading a.toggle')
-    .trigger('click')
+  count = $('.slide').length - 1
+  if count >= 6
+    alert "Sorry, you've reached the maximum allowed number of slides."
+  else
+    $('.slide')
+      .removeClass('active')
+      .find('.content').slideUp(100)
+    
+    $("#template-slide")
+      .clone()
+      .appendTo('.slides')
+      .attr('id', '')
+      .find('.heading a.toggle')
+      .trigger('click')
   
 $(document).on 'click', '#delete-slide', ->
   if confirm("Are you sure you want to delete this slide?")
