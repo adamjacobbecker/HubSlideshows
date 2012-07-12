@@ -127,12 +127,7 @@ $(document).on 'click', '#submit-btn', (e) ->
     success: (data) ->
       if el.data('method') == 'POST'
         if data.edit_project_path
-          el.button 'reset'
-          $("#project-page").slideUp 500, ->
-            $("#success-page").fadeIn 300
-          $("#edit-project-path")
-            .html(data.edit_project_path)
-            .attr('href', data.edit_project_path)
+          window.location = data.edit_project_path
         else
           alert 'Dang, an error occured.'
           el.button 'reset'

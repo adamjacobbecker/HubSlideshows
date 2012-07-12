@@ -2,6 +2,7 @@
 - provide(:body_class, "project")
 
 %h1= "Edit Project: #{@project.name}"
+%a.btn.btn-primary.btn-large{href: play_one_path(@project.id), target: '_blank'} Preview Project
 %hr
 
 #project-page

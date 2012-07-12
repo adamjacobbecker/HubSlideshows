@@ -14,7 +14,10 @@ class StaticPagesController < ApplicationController
     render :layout => false
   end
   
-  def play_static
-    render :layout => false
+  def play_one
+    @projects = Project.where(id: params[:project_id])
+    @hub = Hub.find(@projects[0].hub)
+    @slide_params = {x: 0, y: 0, page_count: 1, project_count: 1}
+    render "play", layout: false
   end
 end
